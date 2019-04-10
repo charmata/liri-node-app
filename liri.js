@@ -31,6 +31,41 @@ if (process.argv[2] === "concert-this") {
       console.log(err);
     });
 } else if (process.argv[2] === "spotify-this-song") {
+  var song = process.argv.slice(3).join(" ");
+  if (!song) {
+    song = "the sign ace of base";
+  }
+  spotify
+    .search({ type: "track", query: song, limit: 1 })
+    .then(res => {
+      if (res.tracks.items) {
+        res.tracks.items.forEach(song => {
+          var results = [];
+
+          var artists = "";
+          song.artists.forEach((artist, i) => {
+            if (i === 0) {
+              artists += artist.name;
+            } else {
+              artists += ", " + artist.name;
+            }
+          });
+
+          results.push(`Artists: ${artists}`);
+          results.push(`Song: ${song.name}`);
+          results.push(`Album: ${song.album.name}`);
+          if (song.preview_url) {
+            results.push(`Preview: ${song.preview_url}`);
+          }
+          console.log(results.join("\n"));
+        });
+      } else {
+        console.log("No songs found!");
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    });
 } else if (process.argv[2] === "movie-this") {
 } else if (process.argv[2] === "do-what-it-says") {
 }
