@@ -11,13 +11,17 @@ if (process.argv[2] === "concert-this") {
   axios
     .get(`https://rest.bandsintown.com/artists/${artist}/events?app_id=codingbootcamp`)
     .then(res => {
-      res.data.forEach(event => {
-        console.log(
-          `Name: ${event.venue.name}\nLocation: ${event.venue.city}, ${event.venue.country}\nDate: ${moment(
-            event.datetime
-          ).format("MM/DD/YYYY")}\n------`
-        );
-      });
+      if (res.data.length) {
+        res.data.forEach(event => {
+          console.log(
+            `Name: ${event.venue.name}\nLocation: ${event.venue.city}, ${event.venue.country}\nDate: ${moment(
+              event.datetime
+            ).format("MM/DD/YYYY")}\n------`
+          );
+        });
+      } else {
+        console.log("No concerts found!");
+      }
     })
     .catch(err => {
       console.log(err);
