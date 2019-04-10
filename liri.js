@@ -8,7 +8,7 @@ var keys = require("./keys");
 var spotify = new Spotify(keys.spotify);
 
 if (process.argv[2] === "concert-this") {
-  var artist = process.argv[3];
+  var artist = process.argv.slice(3).join("+");
   axios
     .get(`https://rest.bandsintown.com/artists/${artist}/events?app_id=codingbootcamp`)
     .then(res => {
