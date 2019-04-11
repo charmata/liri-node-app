@@ -3,12 +3,20 @@ var spotifyThis = require("./spotifyThis");
 var movieThis = require("./movieThis");
 var preset = require("./preset");
 
-if (process.argv[2] === "concert-this") {
-  concertThis();
-} else if (process.argv[2] === "spotify-this-song") {
-  spotifyThis();
-} else if (process.argv[2] === "movie-this") {
-  movieThis();
-} else if (process.argv[2] === "do-what-it-says") {
-  preset();
+switch (process.argv[2]) {
+  case "concert-this":
+    concertThis();
+    break;
+  case "spotify-this-song":
+    spotifyThis();
+    break;
+  case "movie-this":
+    movieThis();
+    break;
+  case "do-what-it-says":
+    preset();
+    break;
+  default:
+    console.log(`${process.argv[2]} is not a command!`);
+    break;
 }
