@@ -4,8 +4,8 @@ var Spotify = require("node-spotify-api");
 var keys = require("./keys");
 var spotify = new Spotify(keys.spotify);
 
-var spotifyThis = function() {
-  var song = process.argv.slice(3).join(" ");
+var spotifyThis = function(args) {
+  var song = args.slice(3).join(" ");
   if (!song) {
     song = "the sign ace of base";
   }

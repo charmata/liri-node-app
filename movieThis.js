@@ -1,7 +1,7 @@
 var axios = require("axios");
 
-var movieThis = function() {
-  var movie = process.argv.slice(3).join("+");
+var movieThis = function(args) {
+  var movie = args.slice(3).join("+");
   if (!movie) {
     movie = "Mr. Nobody";
   }
@@ -17,7 +17,9 @@ var movieThis = function() {
         var rt = res.data.Ratings.findIndex(rating => {
           return rating.Source == "Rotten Tomatoes";
         });
-        results.push(`Rotten Tomatoes Rating: ${res.data.Ratings[rt].Value}`);
+        if (rt > -1) {
+          results.push(`Rotten Tomatoes Rating: ${res.data.Ratings[rt].Value}`);
+        }
         results.push(`Country: ${res.data.Country}`);
         results.push(`Language: ${res.data.Language}`);
         results.push(`Plot: ${res.data.Plot}`);

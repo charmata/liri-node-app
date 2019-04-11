@@ -2,8 +2,8 @@ var axios = require("axios");
 var moment = require("moment");
 var table = require("table").table;
 
-var concertThis = function() {
-  var artist = process.argv.slice(3).join("+");
+var concertThis = function(args) {
+  var artist = args.slice(3).join("+");
   if (!artist) {
     artist = "kiss";
   }
