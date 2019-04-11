@@ -1,4 +1,5 @@
 require("dotenv").config();
+var fs = require("fs").promises;
 var Spotify = require("node-spotify-api");
 var axios = require("axios");
 var moment = require("moment");
@@ -98,4 +99,11 @@ if (process.argv[2] === "concert-this") {
       console.log(err);
     });
 } else if (process.argv[2] === "do-what-it-says") {
+  fs.readFile("./random.txt", "utf8")
+    .then(data => {
+      console.log(data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 }
