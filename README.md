@@ -1,8 +1,13 @@
-# LIRI Bot
+# LIRI
 
-LIRI (**L**anguage **I**nterpretation and **R**ecognition **I**nterface)
+LIRI (**L**anguage **I**nterpretation and **R**ecognition **I**nterface) is a command line assistant inspired by Apple's Siri.
 
-A command line assistant.
+Liri can:
+
+- Look for upcoming concerts
+- Find information about a song
+- Lookup information about a movie
+- Read commands stored in a file
 
 ## Usage
 
@@ -29,3 +34,14 @@ A command line assistant.
 `node liri do-what-it-says`
 
 ![](./images/do-what-it-says.png)
+
+## Technology Stack
+
+- Node.js
+- Libraries
+  - [Axios](https://www.npmjs.com/package/axios)
+  - [Moment](https://www.npmjs.com/package/moment)
+  - [Node Spotify API](https://www.npmjs.com/package/node-spotify-api)
+  - [Table](https://www.npmjs.com/package/table)
+- [BandsinTown API](https://www.artists.bandsintown.com/bandsintown-api)
+- [OMDb API](https://www.omdbapi.com)
